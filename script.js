@@ -105,78 +105,14 @@ function addTask(date, task) {
 
   // Add a button to mark the task as completed
   const completeButton = document.createElement("button");
-  comple
+  completeButton.textContent = "Complete";
+  completeButton.onclick = () => {
+    taskElement.classList.toggle("completed");
+  };
+  taskElement.appendChild(completeButton);
 
-
-// Task management
-let tasks = {};
-
-// Add task
-function addTask(date, taskText) {
-  if (!taskText.trim()) return; // Ignore empty tasks
-
-  if (!tasks[date]) tasks[date] = []; // Initialize task list for the date
-  tasks[date].push({ text: taskText, completed: false });
-  updateTaskDisplay(date);
+  taskContainer.appendChild(taskElement);
 }
 
-// Mark task as completed
-function toggleTaskCompletion(date, index) {
-  if (tasks[date]) {
-    tasks[date][index].completed = !tasks[date][index].completed;
-    updateTaskDisplay(date);
-  }
-}
-
-// Delete task
-function deleteTask(date, index) {
-  if (tasks[date]) {
-    tasks[date].splice(index, 1);
-    updateTaskDisplay(date);
-  }
-}
-
-// Update task display for a specific day
-function updateTaskDisplay(date) {
-  const taskContainer = document.getElementById(`tasks-${date}`);
-  taskContainer.innerHTML = ""; // Clear current tasks
-
-  if (tasks[date]) {
-    tasks[date].forEach((task, index) => {
-      const taskElement = document.createElement("div");
-      taskElement.className = `task ${task.completed ? "completed" : ""}`;
-
-      const taskText = document.createElement("span");
-      taskText.textContent = task.text;
-      taskElement.appendChild(taskText);
-
-      const completeButton = document.createElement("button");
-      completeButton.textContent = task.completed ? "Undo" : "Complete";
-      completeButton.className = "complete-task-btn";
-      completeButton.onclick = () => toggleTaskCompletion(date, index);
-      taskElement.appendChild(completeButton);
-
-      const deleteButton = document.createElement("button");
-      deleteButton.textContent = "Delete";
-      deleteButton.className = "delete-task-btn";
-      deleteButton.onclick = () => deleteTask(date, index);
-      taskElement.appendChild(deleteButton);
-
-      taskContainer.appendChild(taskElement);
-    });
-  }
-}
-
-// Toggle calendar visibility
-function toggleCalendar() {
-  const calendar = document.getElementById("calendar");
-  calendar.style.display = calendar.style.display === "none" ? "flex" : "none";
-}
-
-// Navigation for weeks (placeholder, no actual week change)
-function changeWeek(direction) {
-  alert(direction === 1 ? "Next week (placeholder)" : "Previous week (placeholder)");
-}
-
-// Initial page load
-document.addEventListener("DOMContentLoaded", generateCalendar);
+// Initialize the calendar on page load
+generateCalendar();

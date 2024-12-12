@@ -44,31 +44,23 @@ main {
     margin: 0 auto;
 }
 
-footer {
-    text-align: center;
-    padding: 10px 0;
-    background-color: #4a90e2;
-    color: white;
-    font-size: 14px;
-}
-
 /* Calendar Styling */
 #calendar {
     display: flex;
-    justify-content: space-between;
     flex-wrap: wrap;
     gap: 15px;
+    justify-content: space-between;
+    margin-top: 20px;
 }
 
 .calendar-day {
-    flex: 1 1 calc(33.33% - 10px);
+    flex: 1 1 calc(14% - 10px);
     background-color: white;
     border: 1px solid #ddd;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    min-width: 250px;
-    position: relative;
+    padding: 15px;
+    min-width: 150px;
     transition: transform 0.2s ease;
 }
 
@@ -78,7 +70,7 @@ footer {
 }
 
 .week-day {
-    font-size: 20px;
+    font-size: 18px;
     font-weight: bold;
     color: #4a90e2;
     margin-bottom: 10px;
@@ -87,12 +79,12 @@ footer {
 .date {
     font-size: 14px;
     color: #777;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 /* Task Dropdown Styling */
 .task-dropdown {
-    width: calc(100% - 20px);
+    width: 100%;
     padding: 8px;
     border: 1px solid #ddd;
     border-radius: 5px;
@@ -101,7 +93,7 @@ footer {
 }
 
 .task-input {
-    width: calc(100% - 20px);
+    width: 100%;
     padding: 10px;
     border: 1px solid #ddd;
     border-radius: 5px;
@@ -126,14 +118,14 @@ footer {
 
 /* Task Styling */
 .task-container {
-    margin-top: 15px;
+    margin-top: 10px;
 }
 
 .task {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px;
+    padding: 8px;
     border: 1px solid #ddd;
     border-radius: 5px;
     margin-bottom: 10px;
@@ -170,3 +162,4 @@ footer {
     height: 20px;
     vertical-align: middle;
 }
+
