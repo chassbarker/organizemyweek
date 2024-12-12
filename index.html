@@ -4,42 +4,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Weekly Planner</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Task Planner</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
     <header>
-        <h1>✨ My Weekly Planner ✨</h1>
-        <p>Stay organized, track habits, and achieve your goals!</p>
+        <div class="logo">Task Planner Pro</div>
+        <nav>
+            <button class="nav-btn" onclick="toggleCalendar()">Toggle Calendar</button>
+            <button class="nav-btn" onclick="changeWeek(-1)">Previous Week</button>
+            <button class="nav-btn" onclick="changeWeek(1)">Next Week</button>
+        </nav>
     </header>
 
-    <div class="navigation">
-        <button onclick="changeWeek(-1)">⬅️ Previous Week</button>
-        <button onclick="toggleCalendar()">📅 Toggle Calendar</button>
-        <button onclick="changeWeek(1)">Next Week ➡️</button>
-    </div>
+    <main>
+        <section id="calendar"></section>
+    </main>
 
-    <!-- Calendar Section -->
-    <section id="calendar">
-        <!-- Calendar dynamically generated here -->
-    </section>
-
-    <!-- Goals Section -->
-    <section id="goals-section">
-        <h2>🎯 Weekly Goals</h2>
-        <div class="goal-input">
-            <input type="text" id="goal-text" placeholder="Add a new goal...">
-            <button id="add-goal" onclick="addGoal()">Add Goal</button>
-        </div>
-        <div id="goals-list">
-            <!-- Goals dynamically generated here -->
-        </div>
-    </section>
-
-    <!-- Footer -->
     <footer>
-        <p>Crafted with ❤️ to help you succeed. 🌟</p>
+        <p>&copy; 2024 Task Planner Pro. All rights reserved.</p>
     </footer>
 
     <script src="script.js"></script>

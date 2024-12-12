@@ -1,117 +1,122 @@
-// Initialize global variables
-let currentWeek = new Date();
-let goals = [];
+// Sample days of the week for calendar
+const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
-// Function to toggle calendar view
-function toggleCalendar() {
-  const calendar = document.getElementById('calendar');
-  const isVisible = calendar.style.display !== 'none';
-  calendar.style.display = isVisible ? 'none' : 'flex';
-}
-
-// Function to navigate between weeks
-function changeWeek(direction) {
-  currentWeek.setDate(currentWeek.getDate() + direction * 7);
-  generateCalendar();
-}
-
-// Function to generate the calendar based on the current week
+// Dynamic calendar generation
 function generateCalendar() {
-  const calendar = document.getElementById('calendar');
-  calendar.innerHTML = ''; // Clear existing calendar
+  const calendar = document.getElementById("calendar");
+  calendar.innerHTML = ""; // Clear previous calendar
+  const today = new Date();
+  const startOfWeek = new Date(today.setDate(today.getDate() - today.getDay())); // Start of current week
 
-  const startOfWeek = getStartOfWeek(currentWeek);
-  const endOfWeek = new Date(startOfWeek);
-  endOfWeek.setDate(startOfWeek.getDate() + 6); // Set the end of the week (7 days)
-
-  const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-
-  // Loop to create each day for the calendar
   for (let i = 0; i < 7; i++) {
-    const day = new Date(startOfWeek);
-    day.setDate(startOfWeek.getDate() + i);
+    const day = new Date(startOfWeek.getTime() + i * 24 * 60 * 60 * 1000); // Increment day
+    const dayElement = document.createElement("div");
+    dayElement.className = "calendar-day";
 
-    const dayContainer = document.createElement('div');
-    dayContainer.classList.add('calendar-day');
-    dayContainer.innerHTML = `
-      <div class="week-day">${daysOfWeek[i]}</div>
-      <div class="date">${day.getDate()}</div>
-      <div class="task-container">
-        <input type="checkbox" id="task-${i}" onclick="handleTaskToggle(${i})">
-        <span class="task-text" id="task-text-${i}">Task for ${day.getDate()}</span>
-      </div>
-      <div class="habit-container">
-        <input type="checkbox" id="habit-${i}" onclick="handleHabitToggle(${i})">
-        <span class="task-text" id="habit-text-${i}">Habit for ${day.getDate()}</span>
-      </div>
-    `;
-    calendar.appendChild(dayContainer);
+    // Header for day
+    const dayHeader = document.createElement("div");
+    dayHeader.className = "week-day";
+    dayHeader.textContent = daysOfWeek[day.getDay()];
+    dayElement.appendChild(dayHeader);
+
+    // Date
+    const dateElement = document.createElement("div");
+    dateElement.className = "date";
+    dateElement.textContent = day.toDateString();
+    dayElement.appendChild(dateElement);
+
+    // Task input area
+    const taskInput = document.createElement("input");
+    taskInput.className = "task-input";
+    taskInput.type = "text";
+    taskInput.placeholder = "Add a task...";
+    dayElement.appendChild(taskInput);
+
+    const addTaskButton = document.createElement("button");
+    addTaskButton.textContent = "Add Task";
+    addTaskButton.className = "add-task-btn";
+    addTaskButton.onclick = () => addTask(day.toDateString(), taskInput.value);
+    dayElement.appendChild(addTaskButton);
+
+    // Task container
+    const taskContainer = document.createElement("div");
+    taskContainer.className = "task-container";
+    taskContainer.id = `tasks-${day.toDateString()}`; // Unique ID for the task container
+    dayElement.appendChild(taskContainer);
+
+    calendar.appendChild(dayElement);
   }
 }
 
-// Function to get the start date of the current week
-function getStartOfWeek(date) {
-  const day = date.getDay(),
-    diff = date.getDate() - day + (day == 0 ? -6 : 1); // Adjust if Sunday
-  return new Date(date.setDate(diff));
+// Task management
+let tasks = {};
+
+// Add task
+function addTask(date, taskText) {
+  if (!taskText.trim()) return; // Ignore empty tasks
+
+  if (!tasks[date]) tasks[date] = []; // Initialize task list for the date
+  tasks[date].push({ text: taskText, completed: false });
+  updateTaskDisplay(date);
 }
 
-// Function to handle task toggle (completed/not completed)
-function handleTaskToggle(dayIndex) {
-  const taskText = document.getElementById(`task-text-${dayIndex}`);
-  const taskCheckbox = document.getElementById(`task-${dayIndex}`);
-  
-  if (taskCheckbox.checked) {
-    taskText.classList.add('completed');
-  } else {
-    taskText.classList.remove('completed');
+// Mark task as completed
+function toggleTaskCompletion(date, index) {
+  if (tasks[date]) {
+    tasks[date][index].completed = !tasks[date][index].completed;
+    updateTaskDisplay(date);
   }
 }
 
-// Function to handle habit toggle (completed/not completed)
-function handleHabitToggle(dayIndex) {
-  const habitText = document.getElementById(`habit-text-${dayIndex}`);
-  const habitCheckbox = document.getElementById(`habit-${dayIndex}`);
-  
-  if (habitCheckbox.checked) {
-    habitText.classList.add('completed');
-  } else {
-    habitText.classList.remove('completed');
+// Delete task
+function deleteTask(date, index) {
+  if (tasks[date]) {
+    tasks[date].splice(index, 1);
+    updateTaskDisplay(date);
   }
 }
 
-// Function to add a new goal
-function addGoal() {
-  const goalText = document.getElementById('goal-text').value;
-  if (goalText.trim() === '') return; // Prevent adding empty goals
+// Update task display for a specific day
+function updateTaskDisplay(date) {
+  const taskContainer = document.getElementById(`tasks-${date}`);
+  taskContainer.innerHTML = ""; // Clear current tasks
 
-  goals.push(goalText);
-  renderGoals();
-  document.getElementById('goal-text').value = ''; // Clear input field
+  if (tasks[date]) {
+    tasks[date].forEach((task, index) => {
+      const taskElement = document.createElement("div");
+      taskElement.className = `task ${task.completed ? "completed" : ""}`;
+
+      const taskText = document.createElement("span");
+      taskText.textContent = task.text;
+      taskElement.appendChild(taskText);
+
+      const completeButton = document.createElement("button");
+      completeButton.textContent = task.completed ? "Undo" : "Complete";
+      completeButton.className = "complete-task-btn";
+      completeButton.onclick = () => toggleTaskCompletion(date, index);
+      taskElement.appendChild(completeButton);
+
+      const deleteButton = document.createElement("button");
+      deleteButton.textContent = "Delete";
+      deleteButton.className = "delete-task-btn";
+      deleteButton.onclick = () => deleteTask(date, index);
+      taskElement.appendChild(deleteButton);
+
+      taskContainer.appendChild(taskElement);
+    });
+  }
 }
 
-// Function to render the list of goals
-function renderGoals() {
-  const goalsList = document.getElementById('goals-list');
-  goalsList.innerHTML = ''; // Clear the existing list
-
-  goals.forEach((goal, index) => {
-    const goalContainer = document.createElement('div');
-    goalContainer.classList.add('goal-container');
-    goalContainer.innerHTML = `
-      <span class="goal-text">${goal}</span>
-      <button onclick="deleteGoal(${index})">Delete</button>
-      <div class="goal-progress">Progress: 0%</div>
-    `;
-    goalsList.appendChild(goalContainer);
-  });
+// Toggle calendar visibility
+function toggleCalendar() {
+  const calendar = document.getElementById("calendar");
+  calendar.style.display = calendar.style.display === "none" ? "flex" : "none";
 }
 
-// Function to delete a goal from the list
-function deleteGoal(index) {
-  goals.splice(index, 1);
-  renderGoals(); // Re-render goals after deletion
+// Navigation for weeks (placeholder, no actual week change)
+function changeWeek(direction) {
+  alert(direction === 1 ? "Next week (placeholder)" : "Previous week (placeholder)");
 }
 
-// Initialize the calendar and other elements
-generateCalendar();
+// Initial page load
+document.addEventListener("DOMContentLoaded", generateCalendar);

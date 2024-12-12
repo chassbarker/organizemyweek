@@ -1,222 +1,154 @@
-/* General Reset */
-* {
+/* General Styling */
+body {
+    font-family: 'Roboto', sans-serif;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: 'Arial', sans-serif;
-    background: linear-gradient(to right, #f3e6ff, #e6f7ff);
+    background-color: #f5f5f5;
     color: #333;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
 }
 
-/* Header Styling */
 header {
-    text-align: center;
-    margin-bottom: 30px;
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-header h1 {
-    font-size: 2.5rem;
-    color: #4a90e2;
-    margin-bottom: 10px;
-}
-
-header p {
-    font-size: 1.1rem;
-    color: #666;
-}
-
-/* Navigation Buttons */
-.navigation {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    margin-bottom: 20px;
-}
-
-.navigation button {
-    padding: 12px 20px;
-    font-size: 1rem;
-    color: #fff;
-    background-color: #4a90e2;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: transform 0.2s, background-color 0.3s ease;
-}
-
-.navigation button:hover {
-    background-color: #357ab9;
-    transform: scale(1.05);
-}
-
-/* Calendar Section */
-#calendar {
     display: flex;
     justify-content: space-between;
-    gap: 15px;
-    margin-bottom: 30px;
-    width: 100%;
-    max-width: 900px;
-}
-
-.calendar-day {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
     align-items: center;
-    padding: 15px;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    background-color: #fff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    text-align: center;
+    padding: 15px 20px;
+    background-color: #4a90e2;
+    color: white;
 }
 
-.calendar-day .week-day {
+header .logo {
+    font-size: 24px;
     font-weight: bold;
+}
+
+nav .nav-btn {
+    background-color: white;
     color: #4a90e2;
-    font-size: 1.1rem;
-    margin-bottom: 5px;
-}
-
-.calendar-day .date {
-    font-size: 1.5rem;
-    margin: 10px 0;
-    color: #333;
-}
-
-.task-container,
-.habit-container {
-    margin-top: 10px;
-    display: flex;
-    align-items: center;
-    width: 100%;
-}
-
-.task-text,
-.habit-text {
-    flex: 1;
-    margin-left: 10px;
-}
-
-.completed {
-    text-decoration: line-through;
-    color: #888;
-}
-
-/* Goals Section */
-#goals-section {
-    width: 100%;
-    max-width: 900px;
-    text-align: center;
-    margin-bottom: 30px;
-}
-
-#goals-section h2 {
-    font-size: 1.8rem;
-    color: #4a90e2;
-    margin-bottom: 15px;
-}
-
-.goal-input {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 20px;
-}
-
-#goal-text {
-    padding: 12px;
-    width: 70%;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    font-size: 1rem;
-}
-
-#add-goal {
-    padding: 12px 20px;
-    font-size: 1rem;
-    margin-left: 10px;
-    color: #fff;
-    background-color: #4a90e2;
-    border: none;
-    border-radius: 10px;
+    border: 1px solid #fff;
+    border-radius: 5px;
+    padding: 10px 15px;
+    font-size: 14px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    margin-left: 10px;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-#add-goal:hover {
+nav .nav-btn:hover {
     background-color: #357ab9;
+    color: white;
 }
 
-#goals-list {
-    text-align: left;
-    max-height: 200px;
-    overflow-y: auto;
+main {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-.goal-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    background-color: #fff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.goal-container .goal-text {
-    flex: 1;
-}
-
-.goal-container button {
-    padding: 5px 15px;
-    font-size: 0.9rem;
-    color: #fff;
-    background-color: #e74c3c;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.goal-container button:hover {
-    background-color: #c0392b;
-}
-
-/* Footer Styling */
 footer {
     text-align: center;
     padding: 10px 0;
-    color: #888;
-    font-size: 0.9rem;
-    border-top: 1px solid #ddd;
+    background-color: #4a90e2;
+    color: white;
+    font-size: 14px;
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-    #calendar {
-        flex-direction: column;
-    }
+/* Calendar Styling */
+#calendar {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 15px;
+}
 
-    .calendar-day {
-        margin-bottom: 15px;
-    }
+.calendar-day {
+    flex: 1 1 calc(33.33% - 10px);
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    min-width: 250px;
+    position: relative;
+    transition: transform 0.2s ease;
+}
 
-    #goal-text {
-        width: 100%;
-        margin-bottom: 10px;
-    }
+.calendar-day:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.week-day {
+    font-size: 20px;
+    font-weight: bold;
+    color: #4a90e2;
+    margin-bottom: 10px;
+}
+
+.date {
+    font-size: 14px;
+    color: #777;
+    margin-bottom: 20px;
+}
+
+.task-input {
+    width: calc(100% - 100px);
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+
+.add-task-btn {
+    padding: 10px;
+    background-color: #4a90e2;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.add-task-btn:hover {
+    background-color: #357ab9;
+}
+
+/* Task Styling */
+.task-container {
+    margin-top: 15px;
+}
+
+.task {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.task.completed {
+    background-color: #eafbe3;
+    text-decoration: line-through;
+    color: #666;
+}
+
+.task button {
+    background-color: #fff;
+    color: #4a90e2;
+    border: 1px solid #4a90e2;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin-left: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.task button:hover {
+    background-color: #4a90e2;
+    color: white;
 }
