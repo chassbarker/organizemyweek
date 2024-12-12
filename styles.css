@@ -1,4 +1,4 @@
-/* General reset and font styling */
+/* General Reset */
 * {
     margin: 0;
     padding: 0;
@@ -7,52 +7,67 @@
 
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #f4f4f9;
+    background: linear-gradient(to right, #f3e6ff, #e6f7ff);
     color: #333;
-    line-height: 1.6;
     padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-/* Header styling */
+/* Header Styling */
 header {
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 header h1 {
-    font-size: 2rem;
+    font-size: 2.5rem;
     color: #4a90e2;
+    margin-bottom: 10px;
 }
 
-/* Navigation buttons */
+header p {
+    font-size: 1.1rem;
+    color: #666;
+}
+
+/* Navigation Buttons */
 .navigation {
     display: flex;
     justify-content: center;
-    gap: 10px;
+    gap: 15px;
     margin-bottom: 20px;
 }
 
 .navigation button {
-    padding: 10px 20px;
+    padding: 12px 20px;
     font-size: 1rem;
     color: #fff;
     background-color: #4a90e2;
     border: none;
-    border-radius: 5px;
+    border-radius: 10px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: transform 0.2s, background-color 0.3s ease;
 }
 
 .navigation button:hover {
     background-color: #357ab9;
+    transform: scale(1.05);
 }
 
-/* Calendar styling */
+/* Calendar Section */
 #calendar {
     display: flex;
     justify-content: space-between;
-    gap: 10px;
-    margin-bottom: 20px;
+    gap: 15px;
+    margin-bottom: 30px;
+    width: 100%;
+    max-width: 900px;
 }
 
 .calendar-day {
@@ -60,30 +75,33 @@ header h1 {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 10px;
+    padding: 15px;
     border: 1px solid #ddd;
-    border-radius: 5px;
+    border-radius: 10px;
     background-color: #fff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
 }
 
 .calendar-day .week-day {
     font-weight: bold;
     color: #4a90e2;
+    font-size: 1.1rem;
+    margin-bottom: 5px;
 }
 
 .calendar-day .date {
     font-size: 1.5rem;
-    margin: 5px 0;
+    margin: 10px 0;
+    color: #333;
 }
 
 .task-container,
 .habit-container {
     margin-top: 10px;
-    width: 100%;
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    width: 100%;
 }
 
 .task-text,
@@ -97,31 +115,42 @@ header h1 {
     color: #888;
 }
 
-/* Goals section */
+/* Goals Section */
 #goals-section {
-    margin-top: 20px;
+    width: 100%;
+    max-width: 900px;
+    text-align: center;
+    margin-bottom: 30px;
 }
 
 #goals-section h2 {
-    font-size: 1.5rem;
-    margin-bottom: 10px;
+    font-size: 1.8rem;
     color: #4a90e2;
+    margin-bottom: 15px;
+}
+
+.goal-input {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
 }
 
 #goal-text {
-    padding: 10px;
-    width: calc(100% - 120px);
+    padding: 12px;
+    width: 70%;
+    border: 1px solid #ddd;
+    border-radius: 10px;
     font-size: 1rem;
-    margin-right: 10px;
 }
 
 #add-goal {
-    padding: 10px 20px;
+    padding: 12px 20px;
     font-size: 1rem;
+    margin-left: 10px;
     color: #fff;
     background-color: #4a90e2;
     border: none;
-    border-radius: 5px;
+    border-radius: 10px;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
@@ -131,7 +160,9 @@ header h1 {
 }
 
 #goals-list {
-    margin-top: 10px;
+    text-align: left;
+    max-height: 200px;
+    overflow-y: auto;
 }
 
 .goal-container {
@@ -141,7 +172,7 @@ header h1 {
     margin-bottom: 10px;
     padding: 10px;
     border: 1px solid #ddd;
-    border-radius: 5px;
+    border-radius: 10px;
     background-color: #fff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
@@ -151,18 +182,27 @@ header h1 {
 }
 
 .goal-container button {
-    padding: 5px 10px;
+    padding: 5px 15px;
     font-size: 0.9rem;
     color: #fff;
     background-color: #e74c3c;
     border: none;
-    border-radius: 5px;
+    border-radius: 10px;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
 .goal-container button:hover {
     background-color: #c0392b;
+}
+
+/* Footer Styling */
+footer {
+    text-align: center;
+    padding: 10px 0;
+    color: #888;
+    font-size: 0.9rem;
+    border-top: 1px solid #ddd;
 }
 
 /* Responsive Design */
@@ -172,7 +212,7 @@ header h1 {
     }
 
     .calendar-day {
-        margin-bottom: 10px;
+        margin-bottom: 15px;
     }
 
     #goal-text {
