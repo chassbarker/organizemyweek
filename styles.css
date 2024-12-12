@@ -1,213 +1,182 @@
-/* Global styles */
-body {
-    font-family: Arial, sans-serif;
+/* General reset and font styling */
+* {
     margin: 0;
-    padding: 20px;
-    background-color: #f4f4f4;
+    padding: 0;
+    box-sizing: border-box;
 }
 
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+    line-height: 1.6;
+    padding: 20px;
+}
+
+/* Header styling */
 header {
     text-align: center;
     margin-bottom: 20px;
 }
 
-h1 {
+header h1 {
     font-size: 2rem;
-    color: #333;
+    color: #4a90e2;
 }
 
-#view-toggle {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-button {
-    padding: 10px 15px;
-    font-size: 1rem;
-    background-color: #007BFF;
-    color: white;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-    margin: 0 5px;
-}
-
-button:hover {
-    background-color: #0056b3;
-}
-
-button:focus {
-    outline: none;
-}
-
-#week-nav {
+/* Navigation buttons */
+.navigation {
     display: flex;
     justify-content: center;
-    margin-bottom: 20px;
-}
-
-#week-nav button {
-    margin: 0 10px;
-}
-
-#goal-section {
-    margin-bottom: 30px;
-}
-
-#goal-input {
-    display: flex;
-    flex-direction: column;
     gap: 10px;
-    align-items: center;
     margin-bottom: 20px;
 }
 
-#goal-text {
-    padding: 10px;
+.navigation button {
+    padding: 10px 20px;
     font-size: 1rem;
-    width: 100%;
-    max-width: 400px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-}
-
-#goals-list {
-    margin-top: 20px;
-}
-
-.goal-container {
-    margin-bottom: 15px;
-    background-color: #fff;
-    padding: 10px;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.goal-container button {
-    font-size: 0.9rem;
-    color: red;
-    cursor: pointer;
-    background: none;
+    color: #fff;
+    background-color: #4a90e2;
     border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
-.goal-progress {
-    margin-top: 10px;
-    font-size: 1.2rem;
-    color: green;
+.navigation button:hover {
+    background-color: #357ab9;
 }
 
+/* Calendar styling */
 #calendar {
     display: flex;
-    flex-wrap: wrap;
     justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 20px;
 }
 
 .calendar-day {
-    width: 14%;
-    padding: 15px;
-    background-color: #fff;
-    margin: 5px;
-    text-align: center;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid #ddd;
     border-radius: 5px;
+    background-color: #fff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    box-sizing: border-box;
 }
 
-.week-day {
-    font-size: 1rem;
+.calendar-day .week-day {
     font-weight: bold;
+    color: #4a90e2;
+}
+
+.calendar-day .date {
+    font-size: 1.5rem;
+    margin: 5px 0;
 }
 
 .task-container,
 .habit-container {
     margin-top: 10px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.task-text {
-    display: inline-block;
+.task-text,
+.habit-text {
+    flex: 1;
+    margin-left: 10px;
+}
+
+.completed {
+    text-decoration: line-through;
+    color: #888;
+}
+
+/* Goals section */
+#goals-section {
+    margin-top: 20px;
+}
+
+#goals-section h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #4a90e2;
+}
+
+#goal-text {
+    padding: 10px;
+    width: calc(100% - 120px);
+    font-size: 1rem;
     margin-right: 10px;
 }
 
-.task-text.completed {
-    text-decoration: line-through;
-}
-
-button.edit-task {
-    font-size: 0.8rem;
-    padding: 2px 6px;
-    background-color: #007BFF;
-    color: white;
+#add-goal {
+    padding: 10px 20px;
+    font-size: 1rem;
+    color: #fff;
+    background-color: #4a90e2;
     border: none;
+    border-radius: 5px;
     cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
-button.edit-task:hover {
-    background-color: #0056b3;
+#add-goal:hover {
+    background-color: #357ab9;
 }
 
-input.habit-checkbox {
-    margin-right: 5px;
+#goals-list {
+    margin-top: 10px;
 }
 
-/* Mobile-friendly adjustments */
+.goal-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.goal-container .goal-text {
+    flex: 1;
+}
+
+.goal-container button {
+    padding: 5px 10px;
+    font-size: 0.9rem;
+    color: #fff;
+    background-color: #e74c3c;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.goal-container button:hover {
+    background-color: #c0392b;
+}
+
+/* Responsive Design */
 @media (max-width: 768px) {
-
-    /* For smaller screens, such as tablets and phones */
-    #goal-input {
-        flex-direction: column;
-    }
-
-    #goal-text {
-        width: 80%;
-    }
-
-    button {
-        width: 100%;
-        padding: 12px;
-        font-size: 1.2rem;
-        margin: 5px 0;
-    }
-
-    #week-nav {
-        flex-direction: column;
-    }
-
     #calendar {
         flex-direction: column;
-        align-items: center;
     }
 
     .calendar-day {
-        width: 80%;
-        /* Make days take up more space on smaller screens */
         margin-bottom: 10px;
     }
 
-    .goal-container {
-        text-align: center;
-    }
-
-    /* Reduce size of goals text on smaller devices */
-    .goal-progress {
-        font-size: 1rem;
-    }
-}
-
-/* Further adjustments for very small screens */
-@media (max-width: 480px) {
-
-    /* For very small screens like phones in portrait mode */
-    .calendar-day {
-        width: 100%;
-        /* Full-width days */
-    }
-
-    .goal-container button {
-        font-size: 1rem;
-    }
-
     #goal-text {
-        width: 90%;
+        width: 100%;
+        margin-bottom: 10px;
     }
 }
