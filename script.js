@@ -100,6 +100,7 @@ function addTask(date, task) {
 
   // Task text
   const taskText = document.createElement("span");
+  taskText.className = "task-text";
   taskText.textContent = task;
   taskElement.appendChild(taskText);
 

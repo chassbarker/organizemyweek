@@ -1,10 +1,12 @@
 /* General Styling */
 body {
     font-family: 'Roboto', sans-serif;
+    background-color: #f4f7fb;
+    /* Light grayish-blue background */
+    color: #333;
+    /* Dark gray text for readability */
     margin: 0;
     padding: 0;
-    background-color: #f5f5f5;
-    color: #333;
 }
 
 header {
@@ -12,21 +14,24 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 15px 20px;
-    background-color: #4a90e2;
+    background-color: #3b8bff;
+    /* Soft blue */
     color: white;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 header .logo {
-    font-size: 24px;
+    font-size: 28px;
     font-weight: bold;
 }
 
 nav .nav-btn {
-    background-color: white;
-    color: #4a90e2;
-    border: 1px solid #fff;
+    background-color: #ffffff;
+    color: #3b8bff;
+    /* Blue text on white button */
+    border: 1px solid #ffffff;
     border-radius: 5px;
-    padding: 10px 15px;
+    padding: 12px 18px;
     font-size: 14px;
     cursor: pointer;
     margin-left: 10px;
@@ -39,127 +44,94 @@ nav .nav-btn:hover {
 }
 
 main {
-    padding: 20px;
     max-width: 1200px;
-    margin: 0 auto;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    /* White background for the main container */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
 }
 
 /* Calendar Styling */
 #calendar {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-    justify-content: space-between;
-    margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-gap: 20px;
+    padding-top: 20px;
 }
 
 .calendar-day {
-    flex: 1 1 calc(14% - 10px);
-    background-color: white;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    padding: 15px;
-    min-width: 150px;
-    transition: transform 0.2s ease;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.2s ease, box-shadow 0.3s ease;
 }
 
 .calendar-day:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
 }
 
 .week-day {
     font-size: 18px;
     font-weight: bold;
-    color: #4a90e2;
+    color: #3b8bff;
+    /* Light blue for day headers */
     margin-bottom: 10px;
 }
 
 .date {
     font-size: 14px;
-    color: #777;
-    margin-bottom: 10px;
+    color: #555;
+    /* Dark gray for the date */
+    margin-bottom: 15px;
+    font-weight: 500;
 }
 
 /* Task Dropdown Styling */
 .task-dropdown {
     width: 100%;
-    padding: 8px;
+    padding: 10px;
     border: 1px solid #ddd;
-    border-radius: 5px;
-    margin-bottom: 10px;
+    border-radius: 8px;
+    margin-bottom: 15px;
     font-size: 14px;
+    background-color: #f9f9f9;
+    /* Soft gray for the dropdown */
+    color: #333;
+    box-sizing: border-box;
 }
 
+.task-dropdown:focus {
+    border-color: #3b8bff;
+    /* Blue border on focus */
+    outline: none;
+}
+
+/* Task input field */
 .task-input {
     width: 100%;
-    padding: 10px;
+    padding: 12px;
     border: 1px solid #ddd;
-    border-radius: 5px;
-    font-size: 14px;
+    border-radius: 8px;
     margin-bottom: 15px;
-}
-
-.add-task-btn {
-    padding: 10px;
-    background-color: #4a90e2;
-    color: white;
-    border: none;
-    border-radius: 5px;
     font-size: 14px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.add-task-btn:hover {
-    background-color: #357ab9;
-}
-
-/* Task Styling */
-.task-container {
-    margin-top: 10px;
-}
-
-.task {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 8px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    margin-bottom: 10px;
     background-color: #f9f9f9;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    color: #333;
 }
 
-.task.completed {
-    background-color: #eafbe3;
-    text-decoration: line-through;
-    color: #666;
+.task-input:focus {
+    border-color: #3b8bff;
+    outline: none;
 }
 
-.task button {
-    background-color: #fff;
-    color: #4a90e2;
-    border: 1px solid #4a90e2;
-    border-radius: 5px;
-    padding: 5px 10px;
-    cursor: pointer;
-    margin-left: 5px;
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.task button:hover {
-    background-color: #4a90e2;
+/* Button Styling */
+.add-task-btn {
+    padding: 12px 18px;
+    background-color: #3b8bff;
+    /* Blue background for the button */
     color: white;
-}
-
-/* Icon Styling for Tasks */
-.task-icon {
-    margin-right: 10px;
-    width: 20px;
-    height: 20px;
-    vertical-align: middle;
-}
-
+    border: none
