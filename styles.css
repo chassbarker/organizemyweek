@@ -90,8 +90,18 @@ footer {
     margin-bottom: 20px;
 }
 
+/* Task Dropdown Styling */
+.task-dropdown {
+    width: calc(100% - 20px);
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
 .task-input {
-    width: calc(100% - 100px);
+    width: calc(100% - 20px);
     padding: 10px;
     border: 1px solid #ddd;
     border-radius: 5px;
@@ -151,4 +161,12 @@ footer {
 .task button:hover {
     background-color: #4a90e2;
     color: white;
+}
+
+/* Icon Styling for Tasks */
+.task-icon {
+    margin-right: 10px;
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
 }

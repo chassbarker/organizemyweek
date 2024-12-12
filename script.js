@@ -1,6 +1,15 @@
 // Sample days of the week for calendar
 const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
+// Task icons mapping
+const taskIcons = {
+  "Grocery Shopping": "🛒",
+  "Workout": "💪",
+  "Meeting": "📅",
+  "Read a Book": "📚",
+  "House Cleaning": "🧹"
+};
+
 // Dynamic calendar generation
 function generateCalendar() {
   const calendar = document.getElementById("calendar");
@@ -25,17 +34,45 @@ function generateCalendar() {
     dateElement.textContent = day.toDateString();
     dayElement.appendChild(dateElement);
 
-    // Task input area
+    // Task dropdown area
+    const taskDropdown = document.createElement("select");
+    taskDropdown.className = "task-dropdown";
+    const defaultOption = document.createElement("option");
+    defaultOption.value = "";
+    defaultOption.textContent = "Select a common task...";
+    defaultOption.disabled = true;
+    defaultOption.selected = true;
+    taskDropdown.appendChild(defaultOption);
+
+    const commonTasks = ["Grocery Shopping", "Workout", "Meeting", "Read a Book", "House Cleaning"];
+    commonTasks.forEach(task => {
+      const option = document.createElement("option");
+      option.value = task;
+      option.textContent = task;
+      taskDropdown.appendChild(option);
+    });
+    dayElement.appendChild(taskDropdown);
+
+    // Task input area for custom tasks
     const taskInput = document.createElement("input");
     taskInput.className = "task-input";
     taskInput.type = "text";
-    taskInput.placeholder = "Add a task...";
+    taskInput.placeholder = "Or add a custom task...";
     dayElement.appendChild(taskInput);
 
     const addTaskButton = document.createElement("button");
     addTaskButton.textContent = "Add Task";
     addTaskButton.className = "add-task-btn";
-    addTaskButton.onclick = () => addTask(day.toDateString(), taskInput.value);
+    addTaskButton.onclick = () => {
+      const selectedTask = taskDropdown.value || taskInput.value; // Use dropdown value if selected, otherwise use input value
+      if (selectedTask.trim()) {
+        addTask(day.toDateString(), selectedTask);
+        taskInput.value = ""; // Clear custom task input
+        taskDropdown.selectedIndex = 0; // Reset dropdown
+      } else {
+        alert("Please select or enter a task.");
+      }
+    };
     dayElement.appendChild(addTaskButton);
 
     // Task container
@@ -47,6 +84,29 @@ function generateCalendar() {
     calendar.appendChild(dayElement);
   }
 }
+
+// Add Task to the container with Icon
+function addTask(date, task) {
+  const taskContainer = document.getElementById(`tasks-${date}`);
+  
+  const taskElement = document.createElement("div");
+  taskElement.className = "task";
+  
+  // Add task icon if it's a common task
+  const taskIcon = document.createElement("span");
+  taskIcon.className = "task-icon";
+  taskIcon.textContent = taskIcons[task] || "✅";  // Default checkmark icon for custom tasks
+  taskElement.appendChild(taskIcon);
+
+  // Task text
+  const taskText = document.createElement("span");
+  taskText.textContent = task;
+  taskElement.appendChild(taskText);
+
+  // Add a button to mark the task as completed
+  const completeButton = document.createElement("button");
+  comple
+
 
 // Task management
 let tasks = {};
