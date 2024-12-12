@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weekly Planner</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header>
+        <h1>Weekly Planner</h1>
+        <div id="view-toggle">
+            <button onclick="toggleCalendar()">Toggle Calendar View</button>
+        </div>
+    </header>
+
+    <div id="goal-section">
+        <h2>Goals</h2>
+        <div id="goal-input">
+            <input type="text" id="goal-text" placeholder="Enter a new goal">
+            <button onclick="addGoal()">Add Goal</button>
+        </div>
+        <div id="goals-list">
+            <!-- Goals will be listed here -->
+        </div>
+    </div>
+
+    <div id="week-nav">
+        <button onclick="changeWeek(-1)">Previous Week</button>
+        <button onclick="changeWeek(1)">Next Week</button>
+    </div>
+
+    <div id="calendar">
+        <!-- Calendar days will be generated here -->
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Weekly Planner</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,213 @@
+/* Global styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f4f4f4;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: 2rem;
+    color: #333;
+}
+
+#view-toggle {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+button {
+    padding: 10px 15px;
+    font-size: 1rem;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    margin: 0 5px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+button:focus {
+    outline: none;
+}
+
+#week-nav {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+#week-nav button {
+    margin: 0 10px;
+}
+
+#goal-section {
+    margin-bottom: 30px;
+}
+
+#goal-input {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+#goal-text {
+    padding: 10px;
+    font-size: 1rem;
+    width: 100%;
+    max-width: 400px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+#goals-list {
+    margin-top: 20px;
+}
+
+.goal-container {
+    margin-bottom: 15px;
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.goal-container button {
+    font-size: 0.9rem;
+    color: red;
+    cursor: pointer;
+    background: none;
+    border: none;
+}
+
+.goal-progress {
+    margin-top: 10px;
+    font-size: 1.2rem;
+    color: green;
+}
+
+#calendar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.calendar-day {
+    width: 14%;
+    padding: 15px;
+    background-color: #fff;
+    margin: 5px;
+    text-align: center;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+}
+
+.week-day {
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.task-container,
+.habit-container {
+    margin-top: 10px;
+}
+
+.task-text {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.task-text.completed {
+    text-decoration: line-through;
+}
+
+button.edit-task {
+    font-size: 0.8rem;
+    padding: 2px 6px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button.edit-task:hover {
+    background-color: #0056b3;
+}
+
+input.habit-checkbox {
+    margin-right: 5px;
+}
+
+/* Mobile-friendly adjustments */
+@media (max-width: 768px) {
+
+    /* For smaller screens, such as tablets and phones */
+    #goal-input {
+        flex-direction: column;
+    }
+
+    #goal-text {
+        width: 80%;
+    }
+
+    button {
+        width: 100%;
+        padding: 12px;
+        font-size: 1.2rem;
+        margin: 5px 0;
+    }
+
+    #week-nav {
+        flex-direction: column;
+    }
+
+    #calendar {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .calendar-day {
+        width: 80%;
+        /* Make days take up more space on smaller screens */
+        margin-bottom: 10px;
+    }
+
+    .goal-container {
+        text-align: center;
+    }
+
+    /* Reduce size of goals text on smaller devices */
+    .goal-progress {
+        font-size: 1rem;
+    }
+}
+
+/* Further adjustments for very small screens */
+@media (max-width: 480px) {
+
+    /* For very small screens like phones in portrait mode */
+    .calendar-day {
+        width: 100%;
+        /* Full-width days */
+    }
+
+    .goal-container button {
+        font-size: 1rem;
+    }
+
+    #goal-text {
+        width: 90%;
+    }
+}
